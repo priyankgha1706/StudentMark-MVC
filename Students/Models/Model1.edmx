@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Student_ReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Student_Value">
+          <Key>
+            <PropertyRef Name="Std_Id" />
+          </Key>
+          <Property Name="Std_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Roll_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tamil" Type="int" Nullable="false" />
+          <Property Name="English" Type="int" Nullable="false" />
+          <Property Name="Maths" Type="int" Nullable="false" />
+          <Property Name="Science" Type="int" Nullable="false" />
+          <Property Name="Social" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+          <Property Name="Average" Type="int" Nullable="false" />
+          <Property Name="Is_Deleted" Type="bit" Nullable="false" />
+          <Property Name="Create_Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="Update_Time_Stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Student_ReportModelStoreContainer">
+          <EntitySet Name="Student_Value" EntityType="Self.Student_Value" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Student_ReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Student_ReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Student_Value" EntityType="Student_ReportModel.Student_Value" />
+        </EntityContainer>
+        <EntityType Name="Student_Value">
+          <Key>
+            <PropertyRef Name="Std_Id" />
+          </Key>
+          <Property Name="Std_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Roll_No" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tamil" Type="Int32" Nullable="false" />
+          <Property Name="English" Type="Int32" Nullable="false" />
+          <Property Name="Maths" Type="Int32" Nullable="false" />
+          <Property Name="Science" Type="Int32" Nullable="false" />
+          <Property Name="Social" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="Average" Type="Int32" Nullable="false" />
+          <Property Name="Is_Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Create_Time_Stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Update_Time_Stamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Student_ReportModelStoreContainer" CdmEntityContainer="Student_ReportEntities">
+          <EntitySetMapping Name="Student_Value">
+            <EntityTypeMapping TypeName="Student_ReportModel.Student_Value">
+              <MappingFragment StoreEntitySet="Student_Value">
+                <ScalarProperty Name="Update_Time_Stamp" ColumnName="Update_Time_Stamp" />
+                <ScalarProperty Name="Create_Time_Stamp" ColumnName="Create_Time_Stamp" />
+                <ScalarProperty Name="Is_Deleted" ColumnName="Is_Deleted" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Social" ColumnName="Social" />
+                <ScalarProperty Name="Science" ColumnName="Science" />
+                <ScalarProperty Name="Maths" ColumnName="Maths" />
+                <ScalarProperty Name="English" ColumnName="English" />
+                <ScalarProperty Name="Tamil" ColumnName="Tamil" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Roll_No" ColumnName="Roll_No" />
+                <ScalarProperty Name="Std_Id" ColumnName="Std_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

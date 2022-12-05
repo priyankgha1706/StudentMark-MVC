@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Students.Models.StudentMarks>
+@{
+    ViewBag.Title = "GetStudentList";
+}
+
+<h2>GetStudentList</h2>
+
+@{
+    ViewBag.Title = "List";
+    int i = 1;
+
+}
+<style>
+    .table {
+        width: 100%;
+        table-layout: fixed;
+        background-color:azure
+
+    }
+    th {
+        width: 100%;
+        table-layout: fixed;
+        background-color:indianred;
+    }
+    body {
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #6de8f3, #f383cf);
+        font-family: 'Roboto', sans-serif;
+    }
+
+
+    tr {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        color: darkcyan;
+        text-transform: uppercase;
+    }
+
+      
+    body{
+  font-family: 'lato', sans-serif;
+       }
+
+
+</style>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+@*<link  src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css' crossorigin='anonymous' />*@
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+   </head>
+
+
+    <div class="text-right">
+        <button class="btn btn-success" onclick="Add()"><span><i class="fa-solid fa-plus"></i></span>  ADD</button>
+     
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Std_Id</th>
+                <th scope="col">Roll_No</th>
+                <th scope="col">Tamil</th>
+                <th scope="col">English</th>
+                <th scope="col">Maths</th>
+                <th scope="col">Science</th>
+                <th scope="col">Social</th>
+                <th scope="col">Total</th>
+                <th scope="col">Average</th>
+                <th scope="col">Action</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>
+                            @Html.DisplayFor(m => item.Std_Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Roll_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Tamil)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.English)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Maths)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Science)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Social)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Average)
+                        </td>
+
+                        <td>
+                            <button onclick="Edit(@(item.Std_Id))"><span><i class="fa-solid fa-pen-to-square"></i></span></button>
+                        <td>
+                            <button onclick="Delete(@(item.Std_Id))"><span><i class="fa-solid fa-trash" aria-hidden="true"></i></span></button>
+
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        no data found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        function Edit(id) {
+            window.location.href = "/StudentData/GetStudentRecords?id=" + id;
+        }
+
+        function Delete(id) {
+            var result = confirm("Are you sure ypu want to delete?");
+            if (result) {
+                window.location.href = "/StudentData/Delete?id=" + id;
+            }
+
+            /* window.location.href = "/StudentData/Delete?id=" + id;*/
+        }
+
+        function Add() {
+            window.location.href = "/StudentData/GetStudentRecords";
+        }
+
+    </script>
+

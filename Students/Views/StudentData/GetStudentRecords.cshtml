@@ -1,0 +1,182 @@
+﻿@model Students.Models.StudentMarks
+@{
+    ViewBag.Title = "Savestudentrecords";
+}
+
+
+
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+
+
+<style>
+
+
+    body {
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #6de8f3, #f383cf);
+        font-family: 'Roboto', sans-serif;
+    }
+    h2 {
+        text-align: center;
+    }
+  
+</style>
+
+
+<h2>Savestudentrecords</h2>
+
+<div>
+
+
+
+    @using (Html.BeginForm("Savestudentrecords", "StudentData", FormMethod.Post, htmlAttributes: new { id = "StudentForm", autocomplete = "off" }))
+
+    {
+
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    @Html.Label("Roll_No : ")
+                    @Html.TextBoxFor(model => model.Roll_No, new { @class = "form-control" , @id="rollNo"})
+                </div>
+                <div>
+                    @Html.Label("Name : ")
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("Tamil : ")
+                    @Html.TextBoxFor(model => model.Tamil, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("English : ")
+                    @Html.TextBoxFor(model => model.English, new { @class = "form-control" })
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div>
+                    @Html.Label("Maths : ")
+                    @Html.TextBoxFor(model => model.Maths, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("Science : ")
+                    @Html.TextBoxFor(model => model.Science, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("Social : ")
+                    @Html.TextBoxFor(model => model.Social, new { @class = "form-control" })
+                </div>
+
+            </div>
+        </div>
+
+        if (Model != null && Model.Std_Id > 0)
+        {
+            <div class=" text-right">
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        }
+        else
+        {
+            <div class=" text-right">
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        }
+        <div>
+
+            <button type="submit" class="btn btn-primary">back</button>
+        </div>
+    }
+</div>
+
+<script>
+
+   
+    function back (){
+        window.location.href = "/StudentData/GetStudentRecords";
+    }
+
+    $('#StudentForm').validate({
+        rules: {
+            Roll_No: {
+                required: true,
+                minlength: 1,
+                maxlength: 8,
+               
+            },
+            Name: {
+                required: true,
+                minlength: 3,
+                maxlength: 20,
+                regex: (/^[A-Za-z]+$/)
+            },
+            Tamil: {
+                required: true,                                                                                                                                                                                                                 
+                minlength: 1,
+                maxlength: 3,
+                 regex: "^[1-9]?[0-9]{1}$|^100$"
+            },
+            English: {
+                required: true,
+                minlength: 1,
+                maxlength: 3,
+                regex: "^[1-9]?[0-9]{1}$|^100$"
+            },
+            Maths: {
+                required: true,
+                minlength: 1,
+                maxlength: 3,
+                regex: "^[1-9]?[0-9]{1}$|^100$"
+            },
+            Science: {
+                required: true,
+                minlength: 1,
+                maxlength: 3,
+                 regex: "^[1-9]?[0-9]{1}$|^100$"
+            },
+            Social: {
+                required: true,
+                minlength: 1,
+                maxlength: 3,
+                 regex: "^[1-9]?[0-9]{1}$|^100$"
+            }
+        },
+
+        messages: {
+                Roll_No: {
+                    required: "this field is required",
+                    minlength: "Please Enter Atleast 5 character",
+                    regex:"please enter Roll Number"
+                }, Name: {
+                    required: "this field is required",
+                    minlength: "Please Enter Atleast 1 character",
+                    regex: "please enter the Name"
+                }, Tamil: {
+                    required: "this field is required",
+                    minlength: "Please Enter Atleast 1 character",
+                     regex: "please enter the valid mark"
+                }, English: {
+                    required: "this field is required",
+                    minlength: "Please Enter Atleast 1 character",
+                    regex: "please enter the valid mark"
+                }, Maths: {
+                    required: "this field is required",
+                   minlength: "Please Enter Atleast 1 character",
+                   regex: "please enter the valid mark"
+                }, Science: {
+                    required: "this field is required",
+                    minlength: "Please Enter Atleast 1 character",
+                    regex: "please enter the valid mark"
+                }, Social: {
+                    required: "this field is required",
+                    minlength: "Please Enter Atleast 1 character",
+                    regex: "please enter the valid mark"
+                }
+            }      
+    });
+</script>
